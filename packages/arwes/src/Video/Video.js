@@ -122,6 +122,7 @@ export default class Video extends Component {
             Animation,
             Frame,
             Loading,
+            caption,
             createLoader,
             createResponsive,
             animation,
@@ -131,7 +132,6 @@ export default class Video extends Component {
             show,
             layer,
             loadResources,
-            resources,
             vidProps,
             i18n,
             className,
@@ -139,7 +139,7 @@ export default class Video extends Component {
             ...etc
         } = this.props;
 
-        const {ready, error, resource} = this.state;
+        const {ready, error} = this.state;
 
         const cls = cx(
             classes.root,
@@ -169,6 +169,14 @@ export default class Video extends Component {
                                     <Loading full animate={animate} show={show} layer={layer}/>
                                 )}
                             </div>
+                            {!!caption && <div className={classes.separator}/>}
+                            {!!caption && (
+                                <figcaption className={classes.children}>
+                                    <small>
+                                        {typeof caption === 'function' ? caption(anim) : caption}
+                                    </small>
+                                </figcaption>
+                            )}
                         </Frame>
                     </figure>
                 )}

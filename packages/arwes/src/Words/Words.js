@@ -201,13 +201,13 @@ export default class Words extends Component {
    * @param  {Boolean} isIn - If entering.
    */
   startAnimation (isIn) {
-    const { theme, children, animate, players, animation } = this.props;
+    const { theme, children, animate, players, animation, mute } = this.props;
 
     if (children.length === 0) {
       return;
     }
 
-    if (animate) {
+    if (animate && !mute) {
       players.typing && players.typing.play();
     }
 

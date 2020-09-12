@@ -1,5 +1,5 @@
 import withStyles from '../tools/withStyles';
-import { withSounds } from '@arwes/sounds';
+import {withSounds} from '../../../sounds/src/withSounds';
 import Header from './Header';
 import styles from './styles';
 

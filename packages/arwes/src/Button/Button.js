@@ -9,6 +9,7 @@ import FrameComponent from '../Frame';
 export default class Button extends Component {
   static propTypes = {
     Animation: PropTypes.any.isRequired,
+
     Highlight: PropTypes.any.isRequired,
     Frame: PropTypes.any.isRequired,
 
@@ -31,7 +32,18 @@ export default class Button extends Component {
       'control',
       'success',
       'alert',
-      'disabled'
+      'disabled',
+      'snapchat',
+      'instagram',
+      'github',
+      'linkedin',
+      'youtube',
+      'facebook',
+      'reddit',
+      'stackoverflow',
+      'tumblr',
+      'twitch',
+      'twitter'
     ]),
     disabled: PropTypes.bool,
     active: PropTypes.bool,
@@ -127,13 +139,13 @@ export default class Button extends Component {
    * @param  {Event} ev
    */
   onClick = ev => {
-    const { disabled, onClick, animate, sounds } = this.props;
+    const { disabled, onClick, animate, players } = this.props;
 
     if (!disabled) {
       onClick && onClick(ev);
 
       if (animate) {
-        sounds.click && sounds.click.play();
+        players.click && players.click.play();
       }
     }
   };

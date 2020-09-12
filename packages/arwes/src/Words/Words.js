@@ -47,7 +47,18 @@ export default class Words extends Component {
       'control',
       'success',
       'alert',
-      'disabled'
+      'disabled',
+      'snapchat',
+      'instagram',
+      'github',
+      'linkedin',
+      'youtube',
+      'facebook',
+      'reddit',
+      'stackoverflow',
+      'tumblr',
+      'twitch',
+      'twitter'
     ]),
 
     /**
@@ -190,14 +201,14 @@ export default class Words extends Component {
    * @param  {Boolean} isIn - If entering.
    */
   startAnimation (isIn) {
-    const { theme, children, animate, sounds, animation } = this.props;
+    const { theme, children, animate, players, animation } = this.props;
 
     if (children.length === 0) {
       return;
     }
 
     if (animate) {
-      sounds.typing && sounds.typing.play();
+      players.typing && players.typing.play();
     }
 
     // 1s / frames per second (FPS)

@@ -14,7 +14,7 @@ export default function Project (props) {
   const {
     theme,
     classes,
-    sounds,
+    players,
     Animation,
     Frame,
     Words,
@@ -24,6 +24,7 @@ export default function Project (props) {
     show,
     node,
     header,
+    header2,
     headerSize,
     icon,
     className,
@@ -55,15 +56,22 @@ export default function Project (props) {
             corners={4}
             hover
             noBackground
-            onClick={() => sounds.click && sounds.click.play()}
+            onClick={() => players.click && players.click.play()}
           >
             {frameAnim => (
               <div>
                 <header className={classes.header}>
                   <Heading node='h1'>
-                    <Words animate={animate} show={frameAnim.entered}>
-                      {header}
-                    </Words>
+                    {typeof header === 'string'
+                        ? <Words animate={animate} show={frameAnim.entered}>
+                          {header}
+                        </Words>
+                        : header ? header : ''}
+                    {typeof header2 === 'string'
+                        ? <Words animate={animate} show={frameAnim.entered}>
+                          {header2}
+                        </Words>
+                        : header2 ? header2 : ''}
                   </Heading>
                   <div className={classes.icon}>{icon}</div>
                 </header>

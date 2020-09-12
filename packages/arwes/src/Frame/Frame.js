@@ -27,7 +27,18 @@ export default class Frame extends Component {
       'control',
       'success',
       'alert',
-      'disabled'
+      'disabled',
+      'snapchat',
+      'instagram',
+      'github',
+      'linkedin',
+      'youtube',
+      'facebook',
+      'reddit',
+      'stackoverflow',
+      'tumblr',
+      'twitch',
+      'twitter'
     ]),
 
     /**
@@ -77,23 +88,23 @@ export default class Frame extends Component {
   };
 
   componentDidMount () {
-    const { animate, show, sounds } = this.props;
+    const { animate, show, players } = this.props;
     if (animate && show) {
-      sounds.deploy && sounds.deploy.play();
+      players.deploy && players.deploy.play();
     }
   }
 
   componentDidUpdate (prevProps) {
-    const { animate, show, sounds } = this.props;
+    const { animate, show, players } = this.props;
     if (animate && prevProps.show !== show) {
-      sounds.deploy && sounds.deploy.play();
+      players.deploy && players.deploy.play();
     }
   }
 
   componentWillUnmount () {
-    const { animate, sounds } = this.props;
+    const { animate, players } = this.props;
     if (animate) {
-      sounds.deploy && sounds.deploy.stop();
+      players.deploy && players.deploy.stop();
     }
   }
 

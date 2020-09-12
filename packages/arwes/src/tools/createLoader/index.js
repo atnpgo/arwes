@@ -28,6 +28,17 @@ export const loadSound = url => {
   });
 };
 
+export const loadVideo = url => {
+  return new Promise((resolve, reject) => {
+    const video = document.createElement('video');
+    video.addEventListener('canplaythrough', () => resolve());
+    video.onerror = () => reject();
+    const source = document.createElement('source');
+    video.appendChild(source);
+    source.src = url;
+  });
+};
+
 /**
  * Create handler for loader functionalities.
  * @param  {Object} depencencies
@@ -39,6 +50,7 @@ export default depencencies => {
   const deps = {
     loadImage,
     loadSound,
+    loadVideo,
     ...depencencies
   };
   return {
@@ -53,10 +65,10 @@ export default depencencies => {
      * @return {Promise}
      */
     load: (resources, opts) => {
-      const { images = [], sounds = [] } = resources || {};
+      const { images = [], sounds = [], videos = [] } = resources || {};
       const options = Object.assign(
         {
-          timeout: 30000
+          timeout: 3000
         },
         opts
       );
@@ -65,7 +77,8 @@ export default depencencies => {
         setTimeout(reject, options.timeout);
         Promise.all([
           ...images.map(image => deps.loadImage(image)),
-          ...sounds.map(sound => deps.loadSound(sound))
+          ...sounds.map(sound => deps.loadSound(sound)),
+          ...videos.map(video => deps.loadVideo(video))
         ]).then(resolve, reject);
       });
     }

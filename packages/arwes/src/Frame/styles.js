@@ -65,7 +65,7 @@ export default theme => {
       },
 
       // TODO: The hover rule is not being referenced by JSS.
-      '&$hover:hover': {
+      '&:hover': {
         '& $border': {
           borderColor: props => getColor(theme, props, 'base'),
           boxShadow: props =>

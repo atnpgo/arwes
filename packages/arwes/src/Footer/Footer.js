@@ -35,16 +35,16 @@ export default class Footer extends Component {
   };
 
   componentDidMount () {
-    const { animate, show, sounds } = this.props;
+    const { animate, show, players } = this.props;
     if (animate && show) {
-      sounds.deploy && sounds.deploy.play();
+      players.deploy && players.deploy.play();
     }
   }
 
   componentDidUpdate (prevProps) {
-    const { animate, show, sounds } = this.props;
+    const { animate, show, players } = this.props;
     if (animate && prevProps.show !== show) {
-      sounds.deploy && sounds.deploy.play();
+      players.deploy && players.deploy.play();
     }
   }
 

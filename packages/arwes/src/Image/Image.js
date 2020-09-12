@@ -8,6 +8,7 @@ import LoadingComponent from '../Loading';
 import { getResponsiveResource } from '../tools/utils';
 import createLoaderModule from '../tools/createLoader';
 import createResponsiveModule from '../tools/createResponsive';
+import Frame from '../Frame';
 
 // TODO:
 // - Set sizing props (loading should adjust)
@@ -144,7 +145,6 @@ export default class Image extends Component {
     } = this.props;
 
     const { ready, error, resource } = this.state;
-
     const cls = cx(
       classes.root,
       {
@@ -162,9 +162,10 @@ export default class Image extends Component {
       >
         {anim => (
           <figure className={cx(cls, classes[anim.status])} {...etc}>
-            <Frame animate={animate} show={show} layer={layer}>
+            <Frame animate={animate} show={show} layer={layer} level={3} corners={4}>
               <div className={classes.holder}>
                 <img
+                    alt={''}
                   {...imgProps}
                   className={cx(classes.img, imgProps.className)}
                   src={resource}
